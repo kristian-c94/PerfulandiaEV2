@@ -1,0 +1,213 @@
+/* Fondo oscuro con desenfoque */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.cart-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Panel lateral (Drawer) */
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background-color: #fdfbf7;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-overlay.open .cart-drawer {
+  right: 0;
+}
+
+/* Encabezado del Carrito */
+.cart-header {
+  padding: 1.5rem;
+  background-color: #3d3229;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #d9ccbc;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #ffffff;
+}
+
+/* Lista de Productos */
+.cart-body {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.cart-empty-msg {
+  text-align: center;
+  color: #7a6a5d;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e2d8cd;
+  align-items: center;
+}
+
+.cart-item-img {
+  width: 65px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #eae2d8;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-brand {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #8c6d53;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.cart-item-title {
+  font-size: 0.9rem;
+  color: #3d3229;
+  margin: 0.2rem 0;
+  font-weight: 600;
+}
+
+.cart-item-price {
+  font-size: 0.85rem;
+  color: #523f2e;
+  font-weight: bold;
+}
+
+/* Controles de Cantidad */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.qty-btn {
+  background-color: #e2d8cd;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #3d3229;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+  background-color: #8c6d53;
+  color: #fff;
+}
+
+.qty-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 20px;
+  text-align: center;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #a83232;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.remove-btn:hover {
+  opacity: 1;
+}
+
+/* Pie del Carrito */
+.cart-footer {
+  padding: 1.5rem;
+  background-color: #f4ede2;
+  border-top: 1px solid #e2d8cd;
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #3d3229;
+  margin-bottom: 1rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: #8c6d53;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background-color 0.25s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #6e543e;
+}

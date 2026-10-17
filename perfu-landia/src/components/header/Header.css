@@ -1,0 +1,240 @@
+/* ==========================================
+   HEADER PRINCIPAL - ESTÉTICA CREMA & CAFÉ
+   ========================================== */
+
+.main-header {
+  background-color: #fdfbf7; /* Fondo crema muy claro */
+  border-bottom: 1px solid #e2d7c7;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(140, 109, 83, 0.05);
+  font-family: 'Playfair Display', 'Georgia', serif;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   LOGO
+   ========================================== */
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #3d3229;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.logo-accent {
+  color: #8c6d53; /* Tono café suave */
+  font-weight: 600;
+}
+
+/* ==========================================
+   BARRA DE BÚSQUEDA
+   ========================================== */
+
+.header-search {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #d9ccbc;
+  border-radius: 20px;
+  padding: 0.2rem 0.5rem 0.2rem 1rem;
+  flex: 1;
+  max-width: 320px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-search:focus-within {
+  border-color: #8c6d53;
+  box-shadow: 0 0 5px rgba(140, 109, 83, 0.2);
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 0.85rem;
+  color: #3d3229;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.5rem;
+}
+
+/* ==========================================
+   NAVEGACIÓN
+   ========================================== */
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #5c4e43;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-link:hover {
+  color: #8c6d53;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #8c6d53;
+  transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Enlace destacado para Árabes */
+.highlight-link {
+  color: #8c6d53;
+  font-weight: 700;
+}
+
+/* ==========================================
+   ACCIONES (CARRITO Y CUENTA)
+   ========================================== */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: #f5efe6;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: #8c6d53;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, sans-serif;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 850px) {
+  .header-container {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .logo-container {
+    justify-content: center;
+  }
+
+  .header-search {
+    max-width: 100%;
+  }
+
+  .nav-list {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .header-actions {
+    justify-content: center;
+  }
+}
+
+/* Control de tamaño para los íconos importados */
+.icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Justering af logo-linket så billede og tekst flugter horisontalt */
+/* Alineación horizontal para que el logo y el texto queden juntos */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+}
+
+/* Estilo para mostrar la imagen con su forma original al lado del texto */
+.header-logo-img {
+  height: 45px; /* Controla el alto para alinearse bien con el texto */
+  width: auto;  /* Permite que el ancho se ajuste de forma natural sin deformarse */
+  object-fit: contain;
+  border-radius: 0; /* Quita el recuadre/círculo forzado */
+}

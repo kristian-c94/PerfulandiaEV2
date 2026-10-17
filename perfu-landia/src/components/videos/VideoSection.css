@@ -1,0 +1,218 @@
+/* Contenedor principal de la sección */
+.video-section-container {
+  max-width: 1200px;
+  margin: 3.5rem auto;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #fdfbf7 0%, #f4ede2 100%);
+  border: 1px solid #e2d8cd;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(61, 50, 41, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Insignia / Badge superior */
+.video-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(140, 109, 83, 0.12);
+  color: #8c6d53;
+  padding: 0.4rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  border: 1px solid rgba(140, 109, 83, 0.2);
+}
+
+/* Título de la sección */
+.video-section-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #3d3229;
+  margin: 0 0 0.4rem 0;
+  letter-spacing: -0.5px;
+}
+
+/* Subtítulo descriptivo */
+.video-section-subtitle {
+  color: #7a6a5d;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+/* Tarjeta del video en formato vertical (Reels / TikTok 9:16) */
+.video-wrapper {
+  position: relative;
+  max-width: 850px; /* Ancho horizontal adecuado para formato YouTube */
+  aspect-ratio: 16 / 9; /* Proporción panorámica 16:9 */
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #1a1613;
+  box-shadow: 0 20px 40px rgba(61, 50, 41, 0.22),
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.4s ease;
+}
+
+/* Efecto Hover: Elevação y resplandor dorado suave */
+.video-wrapper:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 50px rgba(61, 50, 41, 0.32),
+              0 0 30px rgba(140, 109, 83, 0.35);
+}
+
+/* Elemento de video HTML5 */
+.featured-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+}
+
+/* Etiqueta flotante en la esquina del video */
+.video-overlay-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(30, 25, 20, 0.65);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Adaptación para dispositivos móviles */
+@media (max-width: 768px) {
+/* Contenedor principal de la sección */
+.video-section-container {
+  max-width: 1200px;
+  margin: 3.5rem auto;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #fdfbf7 0%, #f4ede2 100%);
+  border: 1px solid #e2d8cd;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(61, 50, 41, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Badge superior */
+.video-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(140, 109, 83, 0.12);
+  color: #8c6d53;
+  padding: 0.4rem 1.1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  border: 1px solid rgba(140, 109, 83, 0.2);
+}
+
+/* Títulos */
+.video-section-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #3d3229;
+  margin: 0 0 0.4rem 0;
+}
+
+.video-section-subtitle {
+  color: #7a6a5d;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* Reproductores en formato horizontal 16:9 (YouTube) */
+.video-wrapper {
+  position: relative;
+  max-width: 850px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #1a1613;
+  box-shadow: 0 20px 40px rgba(61, 50, 41, 0.22),
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.4s ease;
+}
+
+.video-wrapper:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 50px rgba(61, 50, 41, 0.32),
+              0 0 30px rgba(140, 109, 83, 0.25);
+}
+
+.featured-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Etiqueta flotante */
+.video-overlay-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(30, 25, 20, 0.65);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Adaptabilidad móvil */
+@media (max-width: 768px) {
+  .video-section-container {
+    padding: 2rem 1rem;
+    margin: 2rem 1rem;
+  }
+
+  .video-section-heading {
+    font-size: 1.6rem;
+  }
+
+  .video-wrapper {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+}
+
+  .video-section-heading {
+    font-size: 1.7rem;
+  }
+
+  .video-wrapper {
+    max-width: 290px;
+  }
+}
