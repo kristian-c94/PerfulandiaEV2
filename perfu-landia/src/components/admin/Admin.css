@@ -1,0 +1,169 @@
+/* Layout Principal */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f5f7;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #333;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 250px;
+  background-color: #1a1d20;
+  color: #fff;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar h4 {
+  color: #e5b869;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #333;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.admin-nav a {
+  color: #ddd;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s;
+}
+
+.admin-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.btn-back {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 0.6rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.btn-back:hover {
+  background-color: #333;
+}
+
+/* Contenido Principal */
+.admin-main {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+/* Cards y Métricas */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  padding: 1.25rem;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.kpi-card.blue { background-color: #2563eb; }
+.kpi-card.green { background-color: #16a34a; }
+.kpi-card.amber { background-color: #d97706; }
+
+.kpi-card h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.kpi-card h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.admin-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+}
+
+/* Formulario */
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) auto;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.admin-form input,
+.admin-form select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.btn-primary-custom {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary-custom:hover {
+  background-color: #1d4ed8;
+}
+
+/* Tabla */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+  background-color: #f8fafc;
+  color: #475569;
+}
+
+.btn-danger-custom {
+  background: transparent;
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-danger-custom:hover {
+  background-color: #ef4444;
+  color: #fff;
+}

@@ -19,6 +19,20 @@ export default function Login({ onLogin }) {
     if (usuarioValido) {
       const esAdministrador = usuarioValido.email.endsWith('@admin.com') || usuarioValido.email.endsWith('@perfulandia.cl');
 
+      // --- REGISTRAR EN EL HISTORIAL DE LOGINS ---
+      const historialLogins = JSON.parse(localStorage.getItem('logins_perfulandia')) || [];
+      const nuevoRegistroLogin = {
+        id: Date.now(),
+        nombre: usuarioValido.nombre,
+        email: usuarioValido.email,
+        rol: esAdministrador ? 'Admin' : 'Cliente',
+        fechaAcceso: new Date().toLocaleString('es-ES', {
+          dateStyle: 'short',
+          timeStyle: 'medium'
+        })
+      };
+      localStorage.setItem('logins_perfulandia', JSON.stringify([nuevoRegistroLogin, ...historialLogins]));
+
       if (onLogin) {
         onLogin({ 
           nombre: usuarioValido.nombre, 

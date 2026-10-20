@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 
+// Componentes de la Tienda
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import CartDrawer from './components/cart/CartDrawer';
 
+// Páginas de la Tienda
 import Main from './components/main/Main';
 import Productos from './pages/Productos';
 import Arabes from './pages/Arabes';
@@ -13,22 +15,28 @@ import Contacto from './pages/Contacto';
 import Login from './pages/Login';
 import Registro from './pages/Registro';
 
+// Componentes y Páginas del Admin Dashboard
+import AdminLayout from './components/admin/AdminLayout';
+import DashboardHome from './pages/admin/DashboardHome';
+import AdminProductos from './pages/admin/AdminProductos';
+import AdminUsuarios from './pages/admin/Adminusuarios';
+import AdminLogins from './pages/admin/AdminLogins';
+import AdminMensajes from './pages/admin/AdminMensajes'; 
+
 export default function App() {
   const [usuario, setUsuario] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
-  // Estado del Carrito inicializado desde LocalStorage
+  const [searchTerm, setSearchTerm] = useState('');
+
   const [carrito, setCarrito] = useState(() => {
     const saved = localStorage.getItem('carrito_perfulandia');
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Guardar en LocalStorage ante cada cambio
   useEffect(() => {
     localStorage.setItem('carrito_perfulandia', JSON.stringify(carrito));
   }, [carrito]);
 
-  // Agregar producto al carrito
   const handleAddToCart = (producto) => {
     setCarrito((prev) => {
       const existe = prev.find((item) => item.id === producto.id);
@@ -41,10 +49,9 @@ export default function App() {
       }
       return [...prev, { ...producto, cantidad: 1 }];
     });
-    setIsCartOpen(true); // Abre el carrito automáticamente
+    setIsCartOpen(true);
   };
 
-  // Cambiar cantidad (+1 o -1)
   const handleUpdateQuantity = (id, delta) => {
     setCarrito((prev) =>
       prev
@@ -59,40 +66,55 @@ export default function App() {
     );
   };
 
-  // Eliminar elemento
   const handleRemoveItem = (id) => {
     setCarrito((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Total de items para el contador de la insignia
   const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
 
   return (
     <BrowserRouter>
-      <Header 
-        carritoCount={totalItems} 
-        onOpenCart={() => setIsCartOpen(true)} 
-      />
-
       <Routes>
-        <Route path="/" element={<Main onAddToCart={handleAddToCart} />} />
-        <Route path="/productos" element={<Productos onAddToCart={handleAddToCart} />} />
-        <Route path="/perfumes-arabes" element={<Arabes onAddToCart={handleAddToCart} />} />
-        <Route path="/ofertas" element={<Ofertas onAddToCart={handleAddToCart} />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="/login" element={<Login onLogin={(u) => setUsuario(u)} />} />
-        <Route path="/registro" element={<Registro />} />
+        {/* ==================== RUTAS PÚBLICAS DE LA TIENDA ==================== */}
+        <Route
+          element={
+            <>
+              <Header 
+                carritoCount={totalItems} 
+                onOpenCart={() => setIsCartOpen(true)}
+                searchTerm={searchTerm}
+                onSearchChange={setSearchTerm}
+              />
+              <Outlet />
+              <CartDrawer 
+                isOpen={isCartOpen} 
+                onClose={() => setIsCartOpen(false)} 
+                carrito={carrito} 
+                onUpdateQuantity={handleUpdateQuantity} 
+                onRemoveItem={handleRemoveItem} 
+              />
+              <Footer />
+            </>
+          }
+        >
+          <Route path="/" element={<Main onAddToCart={handleAddToCart} searchTerm={searchTerm} />} />
+          <Route path="/productos" element={<Productos onAddToCart={handleAddToCart} searchTerm={searchTerm} />} />
+          <Route path="/perfumes-arabes" element={<Arabes onAddToCart={handleAddToCart} searchTerm={searchTerm} />} />
+          <Route path="/ofertas" element={<Ofertas onAddToCart={handleAddToCart} searchTerm={searchTerm} />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/login" element={<Login onLogin={(u) => setUsuario(u)} />} />
+          <Route path="/registro" element={<Registro />} />
+        </Route>
+
+        {/* ==================== RUTAS DEL ADMIN DASHBOARD ==================== */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="productos" element={<AdminProductos />} />
+          <Route path="usuarios" element={<AdminUsuarios />} />
+          <Route path="logins" element={<AdminLogins />} />
+          <Route path="mensajes" element={<AdminMensajes />} /> 
+        </Route>
       </Routes>
-
-      <CartDrawer 
-        isOpen={isCartOpen} 
-        onClose={() => setIsCartOpen(false)} 
-        carrito={carrito} 
-        onUpdateQuantity={handleUpdateQuantity} 
-        onRemoveItem={handleRemoveItem} 
-      />
-
-      <Footer />
     </BrowserRouter>
   );
 }
