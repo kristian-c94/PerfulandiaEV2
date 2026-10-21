@@ -56,43 +56,45 @@ Plataforma e-commerce de perfumería exclusiva desarrollada con React.js y CSS p
   Bash
   npm run test:karma
 
-  perfulandia/
+```text
+perfulandia/
 ├── public/
 ├── src/
-│   ├── components/          # Componentes reutilizables de la interfaz
-│   │   ├── admin/           # Componentes del módulo de administración
-│   │   ├── banner/          # Carrusel de banners
-│   │   ├── cart/            # Carrito desplegable (CartDrawer)
-│   │   ├── footer/          # Pie de página
-│   │   ├── header/          # Encabezado y barra de navegación
-│   │   ├── main/            # Sección principal de la página de inicio
-│   │   └── videos/          # Sección de video promocional
-│   ├── imagenes/            # Archivos de imágenes y recursos gráficos
-│   ├── pages/               # Páginas principales de la aplicación
-│   │   ├── admin/           # Vistas privadas de administración
-│   │   ├── Arabes.jsx       # Vista de perfume árabe
-│   │   ├── Contacto.jsx     # Formulario de contacto
-│   │   ├── Login.css        # Estilos de la página de inicio de sesión
-│   │   ├── Login.jsx        # Página de inicio de sesión
-│   │   ├── Ofertas.jsx      # Catálogo de ofertas
-│   │   ├── Productos.jsx    # Catálogo de productos
-│   │   ├── Registro.css     # Estilos de la página de registro
-│   │   └── Registro.jsx     # Página de registro
-│   ├── utils/               # Pruebas unitarias de utilidades y páginas
+│   ├── components/
+│   │   ├── admin/
+│   │   ├── banner/
+│   │   ├── cart/
+│   │   ├── footer/
+│   │   ├── header/
+│   │   ├── main/
+│   │   └── videos/
+│   ├── imagenes/
+│   ├── pages/
+│   │   ├── admin/
+│   │   ├── Arabes.jsx
+│   │   ├── Contacto.jsx
+│   │   ├── Login.css
+│   │   ├── Login.jsx
+│   │   ├── Ofertas.jsx
+│   │   ├── Productos.jsx
+│   │   ├── Registro.css
+│   │   └── Registro.jsx
+│   ├── utils/
 │   │   ├── auth.test.js
 │   │   ├── carrito.test.js
 │   │   ├── Contacto.test.jsx
 │   │   └── Productos.test.jsx
-│   ├── App.jsx              # Enrutador principal y estado del carrito
-│   ├── App.test.js          # Pruebas del componente App
-│   ├── index.css            # Estilos globales
-│   ├── index.js             # Punto de entrada de React
+│   ├── App.jsx
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
 │   ├── logo.svg
-│   ├── main.jsx             # Punto de montaje principal
-│   ├── reportWebVitals.js   # Métricas de rendimiento
-│   └── setupTests.js        # Configuración del entorno de pruebas
+│   ├── main.jsx
+│   ├── reportWebVitals.js
+│   └── setupTests.js
 ├── .gitignore
-├── karma.conf.js            # Archivo de configuración de Karma
-├── package.json             # Dependencias y scripts del proyecto
+├── karma.conf.js
+├── package.json
 ├── package-lock.json
 └── README.md
+```
