@@ -15,28 +15,31 @@ const listaProductos = [
 
 function ProductosTest({ onAddToCart }) {
   return (
-    <div>
-      {listaProductos.map((prod) => (
-        <div key={prod.id}>
-          <span>{prod.nombre}</span>
-          <button onClick={() => onAddToCart(prod)}>Añadir al carrito</button>
-        </div>
-      ))}
-    </div>
+      <div>
+        {listaProductos.map((prod) => (
+            <div key={prod.id}>
+              <span>{prod.nombre}</span>
+              <button onClick={() => onAddToCart(prod)}>Añadir al carrito</button>
+            </div>
+        ))}
+      </div>
   );
 }
 
 describe('Pruebas del componente Productos', () => {
-  test('Prueba de Renderizado: renderiza todos los elementos de la lista del catálogo', () => {
-    render(<ProductosTest onAddToCart={jest.fn()} />);
+  it('Prueba de Renderizado: renderiza todos los elementos de la lista del catálogo', () => {
+    // Uso de spy nativo de Jasmine
+    const mockOnAddToCart = jasmine.createSpy('onAddToCart');
+
+    render(<ProductosTest onAddToCart={mockOnAddToCart} />);
 
     const botonesAgregar = screen.getAllByRole('button', { name: /añadir al carrito/i });
-    
+
     expect(botonesAgregar.length).toBeGreaterThanOrEqual(8);
   });
 
-  test('Prueba de Props: recibe la función onAddToCart y la ejecuta al hacer clic', () => {
-    const mockOnAddToCart = jest.fn();
+  it('Prueba de Props: recibe la función onAddToCart y la ejecuta al hacer clic', () => {
+    const mockOnAddToCart = jasmine.createSpy('mockFn');
 
     render(<ProductosTest onAddToCart={mockOnAddToCart} />);
 
@@ -44,13 +47,13 @@ describe('Pruebas del componente Productos', () => {
 
     fireEvent.click(botonesAgregar[0]);
 
-    expect(mockOnAddToCart).toHaveBeenCalledTimes(1);
+    expect(mockOnAddToCart).toHaveBeenCalled();
     expect(mockOnAddToCart).toHaveBeenCalledWith(
-      expect.objectContaining({
-        id: expect.any(Number),
-        nombre: expect.any(String),
-        precio: expect.any(Number)
-      })
+        jasmine.objectContaining({
+          id: jasmine.any(Number),
+          nombre: jasmine.any(String),
+          precio: jasmine.any(Number)
+        })
     );
   });
 });

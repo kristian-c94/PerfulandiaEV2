@@ -11,25 +11,25 @@ function ContactoTest() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="Tu nombre"
-        value={form.nombre}
-        onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-      />
-      <input
-        placeholder="tu.correo@ejemplo.com"
-        value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-      />
-      <textarea
-        placeholder="¿En qué te podemos ayudar?"
-        value={form.mensaje}
-        onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
-      />
-      <button type="submit">Enviar mensaje</button>
-      {enviado && <p>¡Gracias por contactarnos! Tu mensaje ha sido enviado exitosamente.</p>}
-    </form>
+      <form onSubmit={handleSubmit}>
+        <input
+            placeholder="Tu nombre"
+            value={form.nombre}
+            onChange={(e) => setForm({ ...form, nombre: e.target.value })}
+        />
+        <input
+            placeholder="tu.correo@ejemplo.com"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+        />
+        <textarea
+            placeholder="¿En qué te podemos ayudar?"
+            value={form.mensaje}
+            onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
+        />
+        <button type="submit">Enviar mensaje</button>
+        {enviado && <p>¡Gracias por contactarnos! Tu mensaje ha sido enviado exitosamente.</p>}
+      </form>
   );
 }
 
@@ -38,7 +38,7 @@ describe('Pruebas del componente Contacto', () => {
     localStorage.clear();
   });
 
-  test('Prueba de Estado: cambia los valores de los campos al introducir texto', () => {
+  it('Prueba de Estado: cambia los valores de los campos al introducir texto', () => {
     render(<ContactoTest />);
 
     const inputNombre = screen.getByPlaceholderText(/tu nombre/i);
@@ -54,10 +54,11 @@ describe('Pruebas del componente Contacto', () => {
     expect(inputMensaje.value).toBe('Consulta sobre despacho');
   });
 
-  test('Prueba de Renderizado Condicional y Eventos: muestra mensaje de confirmación al enviar', () => {
+  it('Prueba de Renderizado Condicional y Eventos: muestra mensaje de confirmación al enviar', () => {
     render(<ContactoTest />);
 
-    expect(screen.queryByText(/¡Gracias por contactarnos!/i)).not.toBeInTheDocument();
+    // Verificación compatible con Jasmine (busca que sea null cuando no existe)
+    expect(screen.queryByText(/¡Gracias por contactarnos!/i)).toBeNull();
 
     const inputNombre = screen.getByPlaceholderText(/tu nombre/i);
     const inputEmail = screen.getByPlaceholderText(/tu.correo@ejemplo.com/i);
@@ -70,6 +71,8 @@ describe('Pruebas del componente Contacto', () => {
 
     fireEvent.click(botonEnviar);
 
-    expect(screen.getByText(/¡Gracias por contactarnos! Tu mensaje ha sido enviado exitosamente./i)).toBeInTheDocument();
+    // Verificación de existencia del elemento en Jasmine
+    const mensajeExito = screen.getByText(/¡Gracias por contactarnos! Tu mensaje ha sido enviado exitosamente./i);
+    expect(mensajeExito).not.toBeNull();
   });
 });
