@@ -47,10 +47,20 @@ function Registro() {
       return;
     }
 
+    // Estructura completa del nuevo usuario registrado
     const nuevoUsuario = {
+      id: Date.now(),
       nombre: formData.nombre,
       email: formData.email,
-      password: formData.password
+      password: formData.password,
+      rol: 'Cliente',
+      fechaRegistro: new Date().toLocaleDateString('es-CL', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      })
     };
 
     usuarios.push(nuevoUsuario);

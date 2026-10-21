@@ -6,7 +6,12 @@ import logoImg from '../../imagenes/header_img/logo.png';
 import cuentaIcono from '../../imagenes/header_img/cuenta_logo.png';
 import carritoIcono from '../../imagenes/header_img/3144456.png';
 
-export default function Header({ carritoCount = 0, onOpenCart }) {
+export default function Header({ 
+  carritoCount = 0, 
+  onOpenCart, 
+  searchTerm = '', 
+  onSearchChange 
+}) {
   return (
     <header className="main-header">
       <div className="header-container">
@@ -19,12 +24,14 @@ export default function Header({ carritoCount = 0, onOpenCart }) {
           </Link>
         </div>
 
-        {/* Buscador */}
+        {/* Buscador Conectado */}
         <div className="header-search">
           <input 
             type="text" 
             placeholder="Buscar perfumes, marcas, árabes..." 
             className="search-input"
+            value={searchTerm}
+            onChange={(e) => onSearchChange && onSearchChange(e.target.value)}
           />
           <button className="search-btn" aria-label="Buscar"></button>
         </div>
@@ -37,6 +44,8 @@ export default function Header({ carritoCount = 0, onOpenCart }) {
             <li><Link to="/perfumes-arabes" className="nav-link highlight-link">Árabes</Link></li>
             <li><Link to="/ofertas" className="nav-link">Ofertas</Link></li>
             <li><Link to="/contacto" className="nav-link">Contacto</Link></li>
+            {/* Enlace directo al Admin */}
+            <li><Link to="/admin" className="nav-link" style={{ fontWeight: 'bold', color: '#e5b869' }}>Admin</Link></li>
           </ul>
         </nav>
 
