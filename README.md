@@ -36,7 +36,7 @@ Plataforma e-commerce de perfumería exclusiva desarrollada con React.js y CSS p
 1. **Clonar el repositorio e instalar dependencias:**
    ```bash
    git clone <URL_DEL_REPOSITORIO>
-   cd perfulandia
+   cd perfu-landia
    npm install
 
 ## Iniciar el servidor de desarrollo:
